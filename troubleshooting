@@ -1,0 +1,18 @@
+#!/bin/bash
+
+echo "===== NETWORK HEALTH CHECK ====="
+
+echo "Network Status:"
+nmcli networking connectivity
+
+echo
+echo "Device Status:"
+nmcli device status
+
+echo
+echo "Gateway:"
+ip route | grep default
+
+echo
+echo "DNS:"
+nmcli dev show | grep DNS
