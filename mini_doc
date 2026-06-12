@@ -1,0 +1,56 @@
+#!/bin/bash
+
+while true
+do
+
+echo "=============================="
+echo " MINI NOC DASHBOARD "
+echo "=============================="
+echo "1. Device Status"
+echo "2. Wi-Fi Scan"
+echo "3. Show IP Address"
+echo "4. Connectivity Check"
+echo "5. DNS Information"
+echo "6. Exit"
+
+read -p "Choose Option: " choice
+
+case $choice in
+
+1)
+nmcli device status
+;;
+
+2)
+nmcli dev wifi list
+;;
+
+3)
+nmcli -p device show | grep IP4.ADDRESS
+;;
+
+4)
+nmcli networking connectivity
+ping -c 2 8.8.8.8
+;;
+
+5)
+nmcli dev show | grep DNS
+;;
+
+6)
+exit
+;;
+
+*)
+echo "Invalid Choice"
+;;
+
+esac
+
+echo
+read -p "Press Enter to Continue..."
+clear
+
+done
+
